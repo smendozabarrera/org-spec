@@ -1,5 +1,7 @@
 #+TITLE: thi.ng/org-spec
 
+*Forked from [[https://github.com/thi-ng/org-spec][thi-ng/org-spec]]*
+
 An [[http://orgmode.org][Org-mode]] template for technical specification documents and HTML
 publishing
 
