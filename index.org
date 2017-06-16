@@ -3,10 +3,21 @@
 #+OPTIONS: toc:nil h:4 html-postamble:nil html-preamble:t tex:t f:t
 #+OPTIONS: prop:("VERSION")
 #+HTML_DOCTYPE: <!DOCTYPE html>
-#+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
-#+HTML_HEAD: <link href="css/style.css" rel="stylesheet" type="text/css" />
-#+AUTHOR: Karsten Schmidt
-#+EMAIL: mailto:a@.b.com
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+#+AUTHOR: Sergio-Feliciano Mendoza-Barrera
+#+EMAIL:  sergio@bizland.biz
 
 #+LINK: gh    https://github.com/
 #+LINK: rfc   https://tools.ietf.org/html/
@@ -15,7 +26,8 @@
 #+LINK: wiki  https://en.wikipedia.org/wiki/
 
 #+HTML: <div class="outline-2" id="meta">
-| *Author* | {{{author}}} ({{{email}}})    |
+| *Author* | {{{author}}}                  |
+| *Email*  | ({{{email}}})                 |
 | *Date*   | {{{time(%Y-%m-%d %H:%M:%S)}}} |
 #+HTML: </div>
 

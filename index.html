@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2017-06-16 Fri 09:14 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Document title</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Sergio-Feliciano Mendoza-Barrera">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Document title</h1>
+<div class="outline-2" id="meta">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Author</b></td>
+<td class="org-left">Sergio-Feliciano Mendoza-Barrera</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Email</b></td>
+<td class="org-left">(sergio@bizland.biz)</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Date</b></td>
+<td class="org-left">2017-06-16 09:14:38</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#section-intro">1. Introduction</a>
+<ul>
+<li><a href="#orgec29929">1.1. <span class="todo TODO">TODO</span> Abstract</a></li>
+<li><a href="#org6a880b0">1.2. <span class="done DONE">DONE</span> Scope</a></li>
+<li><a href="#orgfb8e549">1.3. Status of This Document</a></li>
+<li><a href="#org79e97bf">1.4. Conventions</a>
+<ul>
+<li><a href="#org8d940ac">1.4.1. Definition of project specific terms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#section-sys-arch">2. System architecture</a>
+<ul>
+<li><a href="#org7c09657">2.1. System actors, roles &amp; responsibilities</a>
+<ul>
+<li><a href="#orgfcbec17">2.1.1. Users</a></li>
+<li><a href="#org165dd81">2.1.2. Client</a></li>
+<li><a href="#org11644eb">2.1.3. Server</a></li>
+</ul>
+</li>
+<li><a href="#orge82122f">2.2. General system design guidelines</a>
+<ul>
+<li><a href="#org125f5e9">2.2.1. User experience</a></li>
+<li><a href="#org4e84993">2.2.2. Accessibility</a></li>
+<li><a href="#orgcf08b0d">2.2.3. Data formats</a></li>
+<li><a href="#org3243ef3">2.2.4. Performance</a></li>
+<li><a href="#org4d88ede">2.2.5. Security</a></li>
+<li><a href="#org0f34541">2.2.6. Layered architecture</a></li>
+</ul>
+</li>
+<li><a href="#orgd33eca6">2.3. Client data model</a>
+<ul>
+<li><a href="#org2172dfe">2.3.1. Overview</a></li>
+<li><a href="#org1f1e60d">2.3.2. User</a></li>
+</ul>
+</li>
+<li><a href="#orgd5bb639">2.4. Technologies used</a></li>
+</ul>
+</li>
+<li><a href="#section-client-server">3. Client / server communication</a>
+<ul>
+<li><a href="#orgc36a3d1">3.1. Server API requirements</a>
+<ul>
+<li><a href="#orgeff387a">3.1.1. Security considerations</a></li>
+<li><a href="#org32ccde4">3.1.2. HTTP requests</a></li>
+</ul>
+</li>
+<li><a href="#orgee5a45f">3.2. Server routes</a>
+<ul>
+<li><a href="#orgcd4ba3a">3.2.1. POST <code>/users/login</code></a></li>
+</ul>
+</li>
+<li><a href="#org4bdaf41">3.3. Clientside SPA routes</a>
+<ul>
+<li><a href="#org6deab86">3.3.1. Route: <code>/login</code></a></li>
+<li><a href="#orgd29f05b">3.3.2. Route: <code>/media/:media_id</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#section-glossary">4. Appendix A - Glossary&#xa0;&#xa0;&#xa0;<span class="tag"><span class="informative">informative</span></span></a></li>
+<li><a href="#section-build-doc">5. Appendix B - Building this document&#xa0;&#xa0;&#xa0;<span class="tag"><span class="informative">informative</span></span></a>
+<ul>
+<li><a href="#orgf701175">5.1. Re-publish an HTML version</a></li>
+<li><a href="#orgdaaaf16">5.2. Re-publish PDF</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgca338e5" class="outline-2">
+<h2 id="section-intro"><a id="orgca338e5"></a><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-section-intro">
+</div>
+
+<div id="outline-container-orgec29929" class="outline-3">
+<h3 id="orgec29929"><span class="section-number-3">1.1</span> <span class="todo TODO">TODO</span> Abstract</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+This document is a demonstration of the <a href="https://github.com/thi-ng/org-spec">thi.ng/org-spec</a> template,
+primarily intended to simplify the creation &amp; maintenance of technical
+specifications written in Org-mode.
+</p>
+
+<p>
+All diagrams in this document are autogenerated from embedded code
+block snippets in the original <code>.org</code> file. See <a href="#section-build-doc">Appendix B</a> for more
+information.
+</p>
+
+<p>
+Brief outline description of the document<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6a880b0" class="outline-3">
+<h3 id="org6a880b0"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> Scope</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Topics covered by this specification:
+</p>
+
+<ul class="org-ul">
+<li><a href="#section-sys-arch">System architecture</a> - design guidelines, data models, roles &amp;
+responsibilities</li>
+<li><a href="#section-client-server">Client / server communication</a> - protocols and implementation details
+between system modules</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfb8e549" class="outline-3">
+<h3 id="orgfb8e549"><span class="section-number-3">1.3</span> Status of This Document</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+<b>May Be Superseded</b>
+</p>
+
+<p>
+This section describes the status of this document at the time of its
+publication. Other documents may supersede this document.
+</p>
+
+<div class="notice notice-info">
+<p>
+<b>Changes since the last version</b>
+</p>
+
+<ul>
+
+<li>no changes</li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org79e97bf" class="outline-3">
+<h3 id="org79e97bf"><span class="section-number-3">1.4</span> Conventions</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+The key words <b>MUST</b>, <b>MUST NOT</b>, <b>REQUIRED</b>, <b>SHOULD</b>, <b>SHOULD NOT</b>,
+<b>RECOMMENDED</b>, <b>MAY</b>, and <b>OPTIONAL</b> in this specification are to be
+interpreted as described in <a href="https://tools.ietf.org/html/2119">RFC2119</a>.
+</p>
+
+<p>
+Since a document and project of this nature deals with a large number
+of technologies, each with their own set of acronyms, please refer to
+the glossary in <a href="#section-glossary">Appendix A</a>, which briefly explains some of them.
+</p>
+</div>
+
+<div id="outline-container-org8d940ac" class="outline-4">
+<h4 id="org8d940ac"><span class="section-number-4">1.4.1</span> Definition of project specific terms</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+In this document:
+</p>
+
+<dl class="org-dl">
+<dt>Term A</dt><dd>is a&#x2026;</dd>
+<dt>Term B</dt><dd>is a&#x2026;</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9b8a549" class="outline-2">
+<h2 id="section-sys-arch"><a id="org9b8a549"></a><span class="section-number-2">2</span> System architecture</h2>
+<div class="outline-text-2" id="text-section-sys-arch">
+<pre class="example">
+VERSION: 1.0
+</pre>
+
+<p>
+Example of generating a GraphViz visualization:
+</p>
+
+
+<div class="figure">
+<p><img src="assets/graph.png" alt="graph.png">
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7c09657" class="outline-3">
+<h3 id="org7c09657"><span class="section-number-3">2.1</span> System actors, roles &amp; responsibilities</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-orgfcbec17" class="outline-4">
+<h4 id="orgfcbec17"><span class="section-number-4">2.1.1</span> Users</h4>
+</div>
+<div id="outline-container-org165dd81" class="outline-4">
+<h4 id="org165dd81"><span class="section-number-4">2.1.2</span> Client</h4>
+</div>
+<div id="outline-container-org11644eb" class="outline-4">
+<h4 id="org11644eb"><span class="section-number-4">2.1.3</span> Server</h4>
+</div>
+</div>
+<div id="outline-container-orge82122f" class="outline-3">
+<h3 id="orge82122f"><span class="section-number-3">2.2</span> General system design guidelines</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-org125f5e9" class="outline-4">
+<h4 id="org125f5e9"><span class="section-number-4">2.2.1</span> User experience</h4>
+</div>
+<div id="outline-container-org4e84993" class="outline-4">
+<h4 id="org4e84993"><span class="section-number-4">2.2.2</span> Accessibility</h4>
+</div>
+<div id="outline-container-orgcf08b0d" class="outline-4">
+<h4 id="orgcf08b0d"><span class="section-number-4">2.2.3</span> Data formats</h4>
+</div>
+<div id="outline-container-org3243ef3" class="outline-4">
+<h4 id="org3243ef3"><span class="section-number-4">2.2.4</span> Performance</h4>
+</div>
+<div id="outline-container-org4d88ede" class="outline-4">
+<h4 id="org4d88ede"><span class="section-number-4">2.2.5</span> Security</h4>
+</div>
+<div id="outline-container-org0f34541" class="outline-4">
+<h4 id="org0f34541"><span class="section-number-4">2.2.6</span> Layered architecture</h4>
+<div class="outline-text-4" id="text-2-2-6">
+<p>
+Example of generating block diagrams from ASCII art using <code>ditaa</code>:
+</p>
+
+
+<div class="figure">
+<p><img src="assets/arch.png" alt="arch.png">
+</p>
+<p><span class="figure-number">Figure 2: </span>Top-level, schematic overview of layered client architecture</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd33eca6" class="outline-3">
+<h3 id="orgd33eca6"><span class="section-number-3">2.3</span> Client data model</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-org2172dfe" class="outline-4">
+<h4 id="org2172dfe"><span class="section-number-4">2.3.1</span> Overview</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Example of generating UML diagrams from textual descriptions using <code>plantuml</code>:
+</p>
+
+
+<div class="figure">
+<p><img src="./assets/clientmodel.png" alt="clientmodel.png">
+</p>
+<p><span class="figure-number">Figure 3: </span>Schematic overview of client side data entities</p>
+</div>
+
+<p>
+In the following sections each data field is expressed with type
+information, in Java style pseudo-code form.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1f1e60d" class="outline-4">
+<h4 id="org1f1e60d"><span class="section-number-4">2.3.2</span> User</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Field</b></th>
+<th scope="col" class="org-left"><b>Required</b></th>
+<th scope="col" class="org-left"><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>name</code></td>
+<td class="org-left">N</td>
+<td class="org-left">User name</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>email</code></td>
+<td class="org-left">N</td>
+<td class="org-left">User email</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>role</code></td>
+<td class="org-left">Y</td>
+<td class="org-left">One of possible values defined by <code>UserRole</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Example PlantUML diagram snippet defining the <code>User</code> class in above
+diagram. The full diagram itself is defined in the file
+<a href="https://raw.githubusercontent.com/thi-ng/org-spec/master/sections/diagrams.org">/sections/diagrams.org</a>, which is not exported to HTML.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-plantuml">class User {
+  String name
+  String email
+  UserRole role
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4636167" class="outline-5">
+<h5 id="org4636167"><span class="section-number-5">2.3.2.1</span> User roles</h5>
+<div class="outline-text-5" id="text-2-3-2-1">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Value</b></th>
+<th scope="col" class="org-left"><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>ANONYMOUS</code></td>
+<td class="org-left">any non-logged in user</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>USER</code></td>
+<td class="org-left">logged in, registered user with default permissions</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ADMIN</code></td>
+<td class="org-left">logged in, registered user with admin permissions</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-plantuml">enum UserRole {
+  ANONYMOUS
+  USER
+  ADMIN
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd5bb639" class="outline-3">
+<h3 id="orgd5bb639"><span class="section-number-3">2.4</span> Technologies used</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+This section lists the currently envisaged set of technologies used to
+implement the system. Links &amp; further explanations of the various
+projects are provided in <a href="#section-glossary">Appendix A</a>.
+</p>
+
+<dl class="org-dl">
+<dt><a href="https://github.com/clojure/clojurescript">ClojureScript</a></dt><dd>Modern dialect of Lisp, compiled to
+optimized JavaScript</dd>
+</dl>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ffc3fb" class="outline-2">
+<h2 id="section-client-server"><a id="org8ffc3fb"></a><span class="section-number-2">3</span> Client / server communication</h2>
+<div class="outline-text-2" id="text-section-client-server">
+</div>
+
+<div id="outline-container-orgc36a3d1" class="outline-3">
+<h3 id="orgc36a3d1"><span class="section-number-3">3.1</span> Server API requirements</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-orgeff387a" class="outline-4">
+<h4 id="orgeff387a"><span class="section-number-4">3.1.1</span> Security considerations</h4>
+</div>
+<div id="outline-container-org32ccde4" class="outline-4">
+<h4 id="org32ccde4"><span class="section-number-4">3.1.2</span> HTTP requests</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+The following table summarizes standard HTTP REST requests (as
+per <a href="https://tools.ietf.org/html/7231">RFC7231</a>):
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>HTTP Verb</b></th>
+<th scope="col" class="org-left"><b>Client intention</b></th>
+<th scope="col" class="org-left"><b>HTTP Status</b></th>
+<th scope="col" class="org-left"><b>HTTP Status</b></th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">(successful)</th>
+<th scope="col" class="org-left">(error)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>POST</b></td>
+<td class="org-left">create a new resource</td>
+<td class="org-left">201 &amp; redirect</td>
+<td class="org-left">400 / 403 / 404</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>PUT</b></td>
+<td class="org-left">update an existing resource</td>
+<td class="org-left">200 / 204</td>
+<td class="org-left">400 / 403 / 404 / 409</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>GET</b></td>
+<td class="org-left">read an existing resource</td>
+<td class="org-left">200</td>
+<td class="org-left">400 / 403 / 404</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>DELETE</b></td>
+<td class="org-left">delete an existing resource</td>
+<td class="org-left">200 / 204</td>
+<td class="org-left">400 / 403 / 404 / 409</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgee5a45f" class="outline-3">
+<h3 id="orgee5a45f"><span class="section-number-3">3.2</span> Server routes</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="outline-container-orgcd4ba3a" class="outline-4">
+<h4 id="orgcd4ba3a"><span class="section-number-4">3.2.1</span> POST <code>/users/login</code></h4>
+<div class="outline-text-4" id="text-3-2-1">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Param</b></th>
+<th scope="col" class="org-left"><b>Required</b></th>
+<th scope="col" class="org-left"><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>email</code></td>
+<td class="org-left">Y</td>
+<td class="org-left">User's registered email address</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pass</code></td>
+<td class="org-left">Y</td>
+<td class="org-left">User password</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Requires authentication:</b> NO
+</p>
+
+<p>
+<b>Description:</b>
+Attempts to authenticate user based on given credentials.
+</p>
+
+<p>
+<b>Returns:</b>
+</p>
+<table><tr><th>Success</th><th>Error</th></tr>
+<tr><td>
+<div class="org-src-container">
+<pre class="src src-javascript">{<span style="color: #BC670F; background-color: #FDFBF5;">"status"</span>: <span style="color: #BC670F; background-color: #FDFBF5;">"ok"</span>}
+</pre>
+</div>
+</td><td>
+<div class="org-src-container">
+<pre class="src src-javascript">{<span style="color: #BC670F; background-color: #FDFBF5;">"status"</span>: <span style="color: #BC670F; background-color: #FDFBF5;">"error"</span>}
+</pre>
+</div>
+</td></tr></table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4bdaf41" class="outline-3">
+<h3 id="org4bdaf41"><span class="section-number-3">3.3</span> Clientside SPA routes</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-org6deab86" class="outline-4">
+<h4 id="org6deab86"><span class="section-number-4">3.3.1</span> Route: <code>/login</code></h4>
+<div class="outline-text-4" id="text-3-3-1">
+<ul class="org-ul">
+<li>Displays login dialog</li>
+<li>HTTP POST credentials to server <code>/login</code> route</li>
+<li>Redirects to SPA main page</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd29f05b" class="outline-4">
+<h4 id="orgd29f05b"><span class="section-number-4">3.3.2</span> Route: <code>/media/:media_id</code></h4>
+<div class="outline-text-4" id="text-3-3-2">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Param</b></th>
+<th scope="col" class="org-left"><b>Type</b></th>
+<th scope="col" class="org-left"><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>media_id</code></td>
+<td class="org-left">UUID</td>
+<td class="org-left">Media asset ID</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Retrieves media asset from server</li>
+<li>Displays media asset</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc29a5b0" class="outline-2">
+<h2 id="section-glossary"><a id="orgc29a5b0"></a><span class="section-number-2">4</span> Appendix A - Glossary&#xa0;&#xa0;&#xa0;<span class="tag"><span class="informative">informative</span></span></h2>
+<div class="outline-text-2" id="text-section-glossary">
+<dl class="org-dl">
+<dt>AWS</dt><dd>Amazon Web Services, cloud service provider.
+<a href="http://aws.amazon.com/">http://aws.amazon.com/</a></dd>
+<dt>ClojureScript</dt><dd>A modern dialect of Lisp compiling to optimized
+JavaScript using Google Closure compiler. <a href="https://github.com/clojure/clojurescript">https://github.com/clojure/clojurescript</a></dd>
+<dt>CRUD</dt><dd>Create, Read, Update, Delete - usually refers to
+adminstration tasks in CMS / database applications</dd>
+<dt>EDN</dt><dd>Extensible Data Notation, lightweight, data exchange format
+similar to JSON, but with extensible type support. Native
+serialization format for Clojure / ClojureScript.
+<a href="https://github.com/edn-format/edn">https://github.com/edn-format/edn</a></dd>
+<dt>Google Closure compiler</dt><dd>Currently best optimizing JavaScript to
+JavaScript compiler. Performs static analysis and whole program
+optimizations to allow efficient deployment of large-scale
+applications. Supports dynamic module loading.
+<a href="https://github.com/google/closure-compiler">https://github.com/google/closure-compiler</a></dd>
+<dt>Google Closure library</dt><dd>Google's standard library for
+cross-browser JavaScript application development. All
+encompassing &amp; optimized for Closure compiler.
+<a href="https://github.com/google/closure-library">https://github.com/google/closure-library</a></dd>
+<dt>JSON</dt><dd>JavaScript Object Notation, lightweight defacto industry
+standard data exchange format, especially if parts of a system
+involve JavaScript. <a href="http://json.org/">http://json.org/</a></dd>
+<dt>SPA</dt><dd>Single-page Application. Refers to a client-side JavaScript
+web application model, usually with different UI modules. All
+essential assets (HTML, JS, CSS) are loaded only once and lead to
+more fluid user experience. Examples: GMail, Google Docs etc.</dd>
+<dt>Swagger</dt><dd>Industry defacto standard documentation system for REST
+API endpoints. <a href="http://swagger.io/">http://swagger.io/</a></dd>
+<dt>UUID</dt><dd>Universally unique identifier, standardized a 128bit value,
+usually expressed as 32 hex characters. <a href="https://en.wikipedia.org/wiki/UUID">https://en.wikipedia.org/wiki/UUID</a></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org061e8b7" class="outline-2">
+<h2 id="section-build-doc"><a id="org061e8b7"></a><span class="section-number-2">5</span> Appendix B - Building this document&#xa0;&#xa0;&#xa0;<span class="tag"><span class="informative">informative</span></span></h2>
+<div class="outline-text-2" id="text-section-build-doc">
+<p>
+This document (including all diagrams) has been generated using the
+following tools:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://emacsformacosx.com/">Emacs</a></li>
+<li><a href="http://orgmode.org">Org-mode</a></li>
+<li><a href="http://ditaa.sourceforge.net">Ditaa</a></li>
+<li><a href="http://graphviz.org">Graphviz</a></li>
+<li><a href="http://plantuml.com/">PlantUML</a></li>
+</ul>
+</div>
+
+<div id="outline-container-orgf701175" class="outline-3">
+<h3 id="orgf701175"><span class="section-number-3">5.1</span> Re-publish an HTML version</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+The entire source code for this document is stored in the file
+<code>index.org</code>. Please follow these steps to publish an updated HTML
+version of the specification:
+</p>
+
+<ol class="org-ol">
+<li>Install the above listed tools. On OSX <b>Ditaa</b>, <b>GraphViz</b> and
+<b>PlantUML</b> can be installed via Homebrew:</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh">brew update &amp;&amp; brew install ditaa graphviz plantuml
+</pre>
+</div>
+
+<ol class="org-ol">
+<li value="2">In Emacs type <code>M-x load-file RET /path/to/org-theme/config.el</code></li>
+<li>Open the <code>index.org</code> file in Emacs</li>
+<li>Press <code>C-c C-e h o</code> to launch the export selection dialog, export
+as HTML and automatically open the file in your web browser</li>
+</ol>
+
+<p>
+<b>Note</b>: The export process will re-generate the changelog (only in the
+exported HTML), re-create any diagrams and replace any existing
+rendered diagram files.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdaaaf16" class="outline-3">
+<h3 id="orgdaaaf16"><span class="section-number-3">5.2</span> Re-publish PDF</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Follow the same instructions as for HTML and then print the document
+to a PDF file via your browser's print dialog. Print style sheets are
+included in the file <code>css/styles.css</code>.
+</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Example footnote, can also contain <a href="https://github.com/thi-ng/org-spec">links</a>.
+</p></div></div>
+
+
+</div>
+</div></div>
+</body>
+</html>
