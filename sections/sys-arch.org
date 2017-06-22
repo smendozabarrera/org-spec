@@ -7,19 +7,19 @@
 Example of generating a GraphViz visualization:
 
 #+BEGIN_SRC dot :noweb yes :file assets/graph.png :exports results
-digraph g {
-  <<dot-style>>
-  rankdir=LR;
+  digraph g {
+    <<dot-style>>
+    rankdir=LR;
 
-  AnonymousUser -> User[label="is a"];
-  RegisteredUser -> User[label="is a"];
-  AdminUser -> User[label="is a"];
+    AnonymousUser -> User[label="is a"];
+    RegisteredUser -> User[label="is a"];
+    AdminUser -> User[label="is a"];
 
-  User -> Client -> Server -> Client;
+    User -> Client -> Server -> Client;
 
-  Server -> Database -> Server;
-  Server -> "AWS S3" -> Server;
-}
+    Server -> Database -> Server;
+    Server -> "AWS S3" -> Server;
+  }
 #+END_SRC
 
 ** System actors, roles & responsibilities

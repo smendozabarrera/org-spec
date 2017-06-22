@@ -60,7 +60,7 @@
 
 #+HTML: <div class="outline-2" id="meta">
 | *Author* | {{{author}}}                  |
-| *Email*  | {{{email}}}                  |
+| *Email*  | {{{email}}}                   |
 | *Date*   | {{{time(%Y-%m-%d %H:%M:%S)}}} |
 #+HTML: </div>
 
